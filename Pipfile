@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+mock = "*"
+requests-mock = "*"
+
+[packages]
+click = "*"
+kafka-python = "*"
+requests = "*"
+bson = "*"
