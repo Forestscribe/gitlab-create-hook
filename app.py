@@ -1,11 +1,11 @@
 import logging
 import sys
 
-import bson
 import click
-from kafka import KafkaConsumer
 
+import bson
 from gitlab import GLSession
+from kafka import KafkaConsumer
 
 gitlab = None
 hook_url = None
@@ -29,7 +29,7 @@ def process_events(kafka_server, gitlab_server, gitlab_token, gitlab_hook_url, d
     gitlab = GLSession(gitlab_server, gitlab_token)
     if debug:
         logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
-    consumer = KafkaConsumer('gitlabbson', fetch_max_wait_ms=10000,
+    consumer = KafkaConsumer('gitlabbson', group_id="createhook", fetch_max_wait_ms=10000,
                              bootstrap_servers=[kafka_server])
     for event in consumer:
         do_event(bson.loads(event.value))
