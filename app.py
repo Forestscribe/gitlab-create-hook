@@ -32,6 +32,7 @@ def process_events(kafka_server, gitlab_server, gitlab_token, gitlab_hook_url, d
     consumer = KafkaConsumer('gitlabbson', group_id="createhook", fetch_max_wait_ms=10000,
                              bootstrap_servers=[kafka_server])
     for event in consumer:
+        print(event)
         do_event(bson.loads(event.value))
 
 if __name__ == '__main__':
