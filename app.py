@@ -35,5 +35,6 @@ def process_events(kafka_server, gitlab_server, gitlab_token, gitlab_hook_url, d
         print(event)
         do_event(bson.loads(event.value))
 
+
 if __name__ == '__main__':
     process_events()

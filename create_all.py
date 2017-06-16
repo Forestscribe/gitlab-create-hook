@@ -22,5 +22,6 @@ def process_events(gitlab_server, gitlab_token, gitlab_hook_url, debug=False):
     for proj in gitlab.getAllProjects():
         gitlab.setupHook(proj['id'], hook_url)
 
+
 if __name__ == '__main__':
     process_events()
