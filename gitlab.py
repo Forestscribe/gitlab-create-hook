@@ -21,6 +21,9 @@ class GLSession(Session):
         res = super(GLSession, self).request(method, url, *args, **kwargs)
         return res
 
+    def getAllProjects(self):
+        return self.get("/projects").json()
+
     def setupHook(self, project_id, hook_url):
         if not isinstance(project_id, int):
             project_id = urllib.quote_plus(project_id)
